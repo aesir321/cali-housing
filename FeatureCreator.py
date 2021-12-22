@@ -1,7 +1,7 @@
 import numpy as np
 from sklearn.base import BaseEstimator, TransformerMixin
 
-rooms_ix, bedrooms_ix, population_ix, households_ix = 3, 4, 5, 6
+rooms_ix, bedrooms_ix, population_ix, households_ix = 2, 3, 4, 5
 
 
 class FeatureCreator(BaseEstimator, TransformerMixin):

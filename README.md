@@ -1,1 +1,5 @@
-# cali-housing
+# California House Price Prediction
+
+## Description
+
+## Developer setup

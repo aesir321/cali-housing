@@ -7,6 +7,7 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 from sklearn.metrics import mean_squared_error
+import mlflow.sklearn
 
 from FeatureCreator import FeatureCreator
 
@@ -70,9 +71,7 @@ if __name__ == "__main__":
 
     X_train_t = pipeline.fit_transform(X_train, y_train)
 
+    mlflow.autolog()
     linear_svm = LinearSVR(random_state=42)
-    linear_svm.fit(X_train_t, y_train)
-
-    y_pred = linear_svm.predict(X_train_t)
-    rmse = mean_squared_error(y_train, y_pred, squared=False)
-    print(f"RMSE: ${rmse}")
+    with mlflow.start_run() as run:
+        linear_svm.fit(X_train_t, y_train)
